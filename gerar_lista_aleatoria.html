@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+
+<script>
+    function sortear_numero(){
+        return Math.round(Math.random() * 10);
+    }
+    function inserir_numero_na_lista(quantidade){
+        var contador = 1;
+        var numeros_gerados = [];
+        while(contador <= quantidade){
+            var achou = false;
+            var numero_sorteado = sortear_numero();
+            if (numero_sorteado != 0){
+                for(var i = 0; i < numeros_gerados.length; i++){
+                    if (numeros_gerados[i] == numero_sorteado){
+                        achou = true;
+                        break;
+                    }
+                }
+                if (achou == false){
+                    numeros_gerados.push(numero_sorteado);
+                    contador++;
+                }
+            }
+        }
+        return numeros_gerados; 
+    }
+    var lista_numeros = inserir_numero_na_lista(3);
+    console.log(lista_numeros);
+    
+</script>
