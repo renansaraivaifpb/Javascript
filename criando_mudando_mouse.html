@@ -11,7 +11,7 @@
     pincel.fillRect(0,0,600,400);
     var lista_cores = ["blue", "red", "green"];
     var indice = 0;
-    var mudar = 0;
+    var indiceCorAtual = 0;
     function interagir(evento, cor_padrao = 'blue'){
         //alert("Clicado!");
         var coordenada_x = evento.clientX - tela.offsetLeft;
@@ -20,16 +20,16 @@
         //alert("Coordenada clicada: (" + coordenada_x + ", " + coordenada_y + ")");
         // pintar uma bolinha na coordenada clicada
 
-        pincel.fillStyle=lista_cores[mudar];
+        pincel.fillStyle=lista_cores[indiceCorAtual];
         pincel.beginPath();
         pincel.arc(coordenada_x, coordenada_y, 10, 0, 2*3.14);
         pincel.fill();
     }
     function mudaCor(){
         alert("mudar de cor");
-        mudar += 1;
-        if (mudar == 3){
-            mudar = 0;
+        indiceCorAtual++;
+        if (indiceCorAtual == lista_cores.length){
+            indiceCorAtual = 0;
         }
         return false;
     }
