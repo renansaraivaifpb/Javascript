@@ -1,0 +1,38 @@
+<html>
+    <body>
+        <button id = "atualizar">atualizar</button>
+    </body>
+</html>
+<canvas width="600" height="500"></canvas>
+<script>
+    var botao = document.querySelector("#atualizar");
+    botao.addEventListener("click", function(){
+        location.reload();
+    })
+    function gerarCores(opacidade = 1){
+        let r = Math.random() * 255;
+        let g = Math.random() * 255;
+        let b = Math.random() * 255;
+        return `rgba(${r}, ${g}, ${b}, ${opacidade})`;
+    }
+    function pintarquadrado(x, y, cor){
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+        pincel.fillStyle = cor;
+        pincel.fillRect(x, y, 50, 50);
+        pincel.strokeStyle = 'black';
+        pincel.strokeRect(x, y, 50, 50);    
+    }
+    var contador = 1;
+    var maximo = 100;
+    var x = 0;
+    var y = 0;
+    for(contadory = 1; contadory <= 100; contadory++){
+        for(contadorx = 1; contadorx <= 100; contadorx++){
+            pintarquadrado(x, y, gerarCores(1));
+            x += 50;
+        }
+        y += 50;
+        x = 0;
+    }
+</script>
